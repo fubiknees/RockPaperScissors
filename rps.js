@@ -5,7 +5,9 @@ let tieScore= 0;
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
-const resultDiv = document.querySelector('.result')
+const resultDiv = document.querySelector('.result');
+const currentPlayerScore = document.querySelector('.player-score');
+const currentComputerScore = document.querySelector('.computer-score');
 // function game ( ) { 
 
 function getComputerChoice ( ) {    
@@ -80,10 +82,16 @@ function whoWins (playerScore, computerScore) {
     }   
 }
 
+function updateScore (currentPlayerScore, currentComputerScore) {
+    currentPlayerScore.innerText = `Player Score: ${playerScore}`
+    currentComputerScore.innerText = `Computer Score: ${computerScore}`
+}
+
 rockButton.addEventListener('click', () => {
     const computerSelection = getComputerChoice ( );  
     const playerSelection = 'ROCK'
     playRound(playerSelection, computerSelection);
+    updateScore (currentPlayerScore, currentComputerScore);
     whoWins (playerScore, computerScore)
 })
 
@@ -91,6 +99,7 @@ paperButton.addEventListener('click', () => {
     const playerSelection = 'PAPER'
     const computerSelection = getComputerChoice ( ); 
     playRound(playerSelection, computerSelection);
+    updateScore (currentPlayerScore, currentComputerScore);
     whoWins (playerScore, computerScore)
 })
 
@@ -98,6 +107,7 @@ scissorsButton.addEventListener('click', () => {
     const playerSelection = 'SCISSORS'
     const computerSelection = getComputerChoice ( ); 
     playRound(playerSelection, computerSelection);
+    updateScore (currentPlayerScore, currentComputerScore);
     whoWins (playerScore, computerScore)
 })
 
@@ -116,7 +126,7 @@ scissorsButton.addEventListener('click', () => {
  
 
  
-alert( "Final Scores – Player: " + playerScore + " " + "AI: " + computerScore + " " + "Tie: " + tieScore + " "); 
+// alert( "Final Scores – Player: " + playerScore + " " + "AI: " + computerScore + " " + "Tie: " + tieScore + " "); 
 
  
 
