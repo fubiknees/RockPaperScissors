@@ -6,9 +6,6 @@ const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
 const resultDiv = document.querySelector('.result')
- 
-
-
 // function game ( ) { 
 
 function getComputerChoice ( ) {    
@@ -17,12 +14,11 @@ function getComputerChoice ( ) {
   }    
 
 function playRound (playerSelection,  computerSelection) {   
-    console.log('1', playerSelection, '2', computerSelection)
+    
      if ( playerSelection === computerSelection) {   
-
+            tieScore+= 1; 
             const p = document.createElement('p')
             p.innerText = "TIE GAME! AI predicted your choice of " + playerSelection + " ." + "Play Again!"
-            tieScore+= 1; 
             resultDiv.appendChild(p);
             
 
@@ -70,22 +66,39 @@ function playRound (playerSelection,  computerSelection) {
       }   
  }   
 
+
+function whoWins (playerScore, computerScore) {
+    if (playerScore === 5) {
+        const h3 = document.createElement('h3')
+        h3.innerText = `Congratulations, YOU WIN ${playerScore} to ${computerScore}`
+        resultDiv.append(h3)
+    }
+    else if (computerScore === 5 ) {
+        const h3 = document.createElement('h3')
+        h3.innerText = `Oh, nooooo Humanity loses ${playerScore} to ${computerScore}`
+        resultDiv.append(h3)
+    }   
+}
+
 rockButton.addEventListener('click', () => {
     const computerSelection = getComputerChoice ( );  
     const playerSelection = 'ROCK'
     playRound(playerSelection, computerSelection);
+    whoWins (playerScore, computerScore)
 })
 
 paperButton.addEventListener('click', () => {
     const playerSelection = 'PAPER'
     const computerSelection = getComputerChoice ( ); 
     playRound(playerSelection, computerSelection);
+    whoWins (playerScore, computerScore)
 })
 
 scissorsButton.addEventListener('click', () => {
     const playerSelection = 'SCISSORS'
     const computerSelection = getComputerChoice ( ); 
     playRound(playerSelection, computerSelection);
+    whoWins (playerScore, computerScore)
 })
 
 
