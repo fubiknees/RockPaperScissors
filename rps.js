@@ -2,7 +2,12 @@ let playerScore = 0;
 let computerScore= 0; 
 let tieScore= 0; 
 
+const rockButton = document.querySelector('#rock');
+const paperButton = document.querySelector('#paper');
+const scissorsButton = document.querySelector('#scissors');
+const resultDiv = document.querySelector('.result')
  
+
 
 function game ( ) { 
 
@@ -20,9 +25,9 @@ function playRound (playerSelection,  computerSelection) {
 
      if ( playerSelection === computerSelection) {   
 
-             alert("TIE GAME! AI predicted your choice of " + playerSelection + " ." + "Play Again! ") ; 
-
-             tieScore+= 1; 
+            const p = document.createElement('p')
+            p.innerText = "TIE GAME! AI predicted your choice of " + playerSelection + " ." + "Play Again!"
+            tieScore+= 1; 
 
          } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {    
 
@@ -62,25 +67,26 @@ function playRound (playerSelection,  computerSelection) {
 
       }   
 
-}  
+}   
 
-const playerSelection = prompt ('Choose your weapon! Write in your answer - Rock, Paper or Scissors.' ).toUpperCase( );  
+rockButton.addEventListener('click, () => {
+    const playerSelection = 'rock'
+    const computerSelection = getComputerChoice ( );  
+    playRound(playerSelection, computerSelection);
+}
 
-const computerSelection = getComputerChoice ( );  
 
-console.log(playRound(playerSelection, computerSelection));   
-
-} 
-
-game ( ); 
-
-game ( ); 
+ 
 
 game ( ); 
 
-game ( ); 
+// game ( ); 
 
-game ( ); 
+// game ( ); 
+
+// game ( ); 
+
+// game ( ); 
 
  
 
